@@ -1,0 +1,125 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://images/pico8_invaders_sprites_LARGE v2.png" type="Texture" id=1]
+[ext_resource path="res://src/characters/Spaceship.gd" type="Script" id=2]
+[ext_resource path="res://src/states/Idle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/states/Moving.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/stats/Health.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/stats/Bombs.tscn" type="PackedScene" id=6]
+[ext_resource path="res://images/spaceship.png" type="Texture" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": false,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": false,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": false,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.244936, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="Spaceship" type="KinematicBody2D" groups=[
+"allies",
+]]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "idle"
+
+[node name="Heart" type="ColorRect" parent="."]
+visible = false
+margin_left = -0.860572
+margin_top = 0.317053
+margin_right = 1.13943
+margin_bottom = 2.31705
+rect_min_size = Vector2( 2, 2 )
+color = Color( 1, 0, 0.301961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1.02739 )
+scale = Vector2( 0.0680558, 0.0689106 )
+shape = SubResource( 5 )
+
+[node name="States" type="Node2D" parent="."]
+
+[node name="Idle" parent="States" instance=ExtResource( 3 )]
+
+[node name="Moving" parent="States" instance=ExtResource( 4 )]
+speed = 40
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="ShotCooldown" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="BulletPoint" type="Position2D" parent="."]
+position = Vector2( 0, -6.92318 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Stats" type="Control" parent="HUD"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" parent="HUD/Stats" instance=ExtResource( 5 )]
+
+[node name="Bombs" parent="HUD/Stats" instance=ExtResource( 6 )]
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Particles"]
+self_modulate = Color( 1, 0, 1, 0.490196 )
+position = Vector2( 0, 0.98749 )
+z_index = -1
+lifetime = 0.8
+local_coords = false
+draw_order = 1
+texture = ExtResource( 7 )
+gravity = Vector2( 0, 0 )
+color_ramp = SubResource( 6 )
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="Audio"]
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="Audio"]
+
+[node name="Move" type="AudioStreamPlayer2D" parent="Audio"]
+[connection signal="timeout" from="Timers/ShotCooldown" to="." method="_on_ShotCooldown_timeout"]
