@@ -5,6 +5,17 @@ var _state = null
 var possible_states : Dictionary = {}
 onready var states_holder = $States
 onready var health = $Stats/Health
+onready var sprite = $Sprite
+
+onready var audio_hurt = $Audio/Hurt
+onready var sound_hurt = preload("res://sounds/sfx/player_hit.wav")
+onready var sound_die = preload("res://sounds/sfx/player_dead.wav")
+
+onready var audio_shoot = $Audio/Shoot
+onready var sound_shoot = preload("res://sounds/sfx/laser_shoot.wav")
+
+onready var audio_move = $Audio/Move
+onready var sound_move = preload("res://sounds/sfx/move.wav")
 
 func _ready():
 	if states_holder != null:
@@ -37,7 +48,19 @@ func change_direction(dir = "idle"):
 	pass
 
 func damage(dmg):
-	pass
+	health.update(1)
 
 func play_sound(sound):
-	pass
+	match sound:
+		"hurt":
+			audio_hurt.stream = sound_hurt
+			audio_hurt.play()
+		"die":
+			audio_hurt.stream = sound_die
+			audio_hurt.play()
+		"shoot":
+			audio_shoot.stream = sound_shoot
+			audio_shoot.play()
+		"move":
+			audio_move.stream = sound_move
+			audio_move.play()

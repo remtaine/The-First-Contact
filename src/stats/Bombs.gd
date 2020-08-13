@@ -13,10 +13,3 @@ func update(v = 0):
 		pass
 	
 	draw()
-
-func draw():
-	for i in range(0, get_child_count()):
-		if i < value:
-			get_child(i).visible = true
-		else:
-			get_child(i).visible = false

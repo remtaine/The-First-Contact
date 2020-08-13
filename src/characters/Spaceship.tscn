@@ -39,6 +39,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 58.6712, 48.9723 )
 
 [sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.244936, 1 )
@@ -53,6 +54,11 @@ script = ExtResource( 2 )
 frames = SubResource( 4 )
 animation = "idle"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0170059, 0.466184 )
+scale = Vector2( 0.0680558, 0.0689106 )
+shape = SubResource( 5 )
+
 [node name="Heart" type="ColorRect" parent="."]
 visible = false
 margin_left = -0.860572
@@ -64,11 +70,6 @@ color = Color( 1, 0, 0.301961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 1.02739 )
-scale = Vector2( 0.0680558, 0.0689106 )
-shape = SubResource( 5 )
 
 [node name="States" type="Node2D" parent="."]
 

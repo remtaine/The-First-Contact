@@ -1,7 +1,7 @@
 class_name Bullet
 extends KinematicBody2D
 
-var speed = 60
+export var speed = 30
 var velocity : Vector2
 var direction : Vector2 = Vector2.ZERO
 
