@@ -3,6 +3,8 @@ extends KinematicBody2D
 
 var _state = null
 var possible_states : Dictionary = {}
+
+onready var object_holder = get_parent().get_parent().get_node("Objects")
 onready var states_holder = $States
 onready var health = $Stats/Health
 onready var sprite = $Sprite
@@ -16,6 +18,9 @@ onready var sound_shoot = preload("res://sounds/sfx/laser_shoot.wav")
 
 onready var audio_move = $Audio/Move
 onready var sound_move = preload("res://sounds/sfx/move.wav")
+
+onready var death_particle_resource = preload("res://src/particles/Death.tscn")
+export var color = Color.white
 
 func _ready():
 	if states_holder != null:
@@ -47,8 +52,13 @@ func exit_state():
 func change_direction(dir = "idle"):
 	pass
 
-func damage(dmg):
-	health.update(1)
+func damage(dmg = 1):
+	var d = death_particle_resource.instance()
+	d.global_position = global_position
+	object_holder.add_child(d)
+	d.emitting = true
+	queue_free()
+#	health.update(1)
 
 func play_sound(sound):
 	match sound:

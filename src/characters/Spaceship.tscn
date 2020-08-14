@@ -49,13 +49,15 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 "allies",
 ]]
 script = ExtResource( 2 )
+color = Color( 0.513726, 0.462745, 0.611765, 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "idle"
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.0170059, 0.466184 )
+position = Vector2( -0.00330259, 0.405258 )
 scale = Vector2( 0.0680558, 0.0689106 )
 shape = SubResource( 5 )
 
@@ -74,8 +76,10 @@ __meta__ = {
 [node name="States" type="Node2D" parent="."]
 
 [node name="Idle" parent="States" instance=ExtResource( 3 )]
+type = "player"
 
 [node name="Moving" parent="States" instance=ExtResource( 4 )]
+type = "player"
 speed = 40
 
 [node name="Timers" type="Node2D" parent="."]

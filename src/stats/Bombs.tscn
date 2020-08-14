@@ -1,25 +1,28 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/stats/Bombs.gd" type="Script" id=1]
 [ext_resource path="res://images/pico8_invaders_sprites_LARGE v2.png" type="Texture" id=2]
+[ext_resource path="res://src/addons/StatsAnimation.tscn" type="PackedScene" id=3]
 
 [node name="Bombs" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Bombs1" type="Sprite" parent="."]
+[node name="Val1" type="Sprite" parent="."]
 position = Vector2( 45, 4 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 32, 48, 8, 8 )
 
-[node name="Bombs2" type="Sprite" parent="."]
+[node name="Val2" type="Sprite" parent="."]
 position = Vector2( 52, 4 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 32, 48, 8, 8 )
 
-[node name="Bombs3" type="Sprite" parent="."]
+[node name="Val3" type="Sprite" parent="."]
 position = Vector2( 59, 4 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 32, 48, 8, 8 )
+
+[node name="AnimationPlayer" parent="." instance=ExtResource( 3 )]

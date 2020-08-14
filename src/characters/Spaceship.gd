@@ -9,13 +9,15 @@ onready var bullet_point = $BulletPoint
 #onready var sound_hurt = preload("")
 
 onready var particles = $Particles
-onready var object_holder = get_parent().get_parent().get_node("Objects")
+
 onready var bullet_resource := preload("res://src/objects/Bullet.tscn")
 
 func _ready():
 	set_physics_process(false)
 	#TODO do tween stuff
-	tween.interpolate_property(self, "scale", Vector2.ZERO, Vector2.ONE,0.5, Tween.TRANS_LINEAR,Tween.EASE_IN)
+	var d = 0.5
+	tween.interpolate_property(self, "scale", Vector2.ZERO, Vector2.ONE, d, Tween.TRANS_LINEAR,Tween.EASE_IN)
+	tween.interpolate_property(self, "rotation_degrees", 360, 0,d, Tween.TRANS_LINEAR,Tween.EASE_IN)
 	tween.start()
 	
 func change_direction(dir = "idle"):

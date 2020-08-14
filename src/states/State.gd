@@ -1,22 +1,28 @@
 class_name State
 extends Node2D
 
-export var is_bot = false
+#export var is_bot = false
 export var state_name = "State"
 onready var host = get_parent().get_parent()
-
+export var type = "bot"
 func get_raw_input() -> Dictionary:
 	var inputs
-	if not is_bot:
-		inputs = {
-			is_moving = Input.is_action_pressed("move_down") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_up"),
-			input_direction = get_input_direction()
-		}
-	else:
-		inputs = {
-			is_moving = true,
-			input_direction = Vector2.DOWN
-		}	
+	match type:
+		"bot":
+			inputs = {
+				is_moving = true,
+				input_direction = Vector2.DOWN
+			}	
+		"structure":
+			inputs = {
+				is_moving = false,
+				input_direction = Vector2.ZERO
+			}
+		_:
+			inputs = {
+				is_moving = Input.is_action_pressed("move_down") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_up"),
+				input_direction = get_input_direction()
+			}
 	return inputs
 	
 func interpret_inputs(input):

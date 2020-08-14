@@ -1,13 +1,14 @@
 class_name Stats
 extends Node2D
 
-export var is_bot = false
+export var hide = false
 export var value = 0
 
 func _ready():
-	if is_bot:
+	if hide:
 		for child in get_children():
-			child.visible = false
+			if child is Sprite:
+				child.visible = false
 
 
 func update(v = 0):
@@ -21,7 +22,7 @@ func update(v = 0):
 	draw()
 
 func draw():
-	if not is_bot:
+	if not hide:
 		for i in range(0, get_child_count()):
 			if i < value:
 				get_child(i).visible = true
