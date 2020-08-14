@@ -2,6 +2,8 @@ class_name Level
 extends Node2D
 
 onready var menu_path = "res://src/menus/MainMenu.tscn"
+onready var screenshake = $Addons/Camera/Screenshake
+
 func _ready():
 	pass
 
@@ -10,3 +12,6 @@ func _unhandled_input(event):
 		get_tree().reload_current_scene()
 	if event.is_action_pressed("menu"):
 		get_tree().change_scene(menu_path)
+
+func screenshake():
+	screenshake.start()

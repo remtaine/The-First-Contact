@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/states/Moving.gd"
 }, {
+"base": "Node2D",
+"class": "Screenshake",
+"language": "GDScript",
+"path": "res://src/addons/Screenshake.gd"
+}, {
 "base": "Character",
 "class": "Spaceship",
 "language": "GDScript",
@@ -90,6 +95,7 @@ _global_script_class_icons={
 "Idle": "",
 "Level": "",
 "Moving": "",
+"Screenshake": "",
 "Spaceship": "",
 "State": "",
 "Stats": "",

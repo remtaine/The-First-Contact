@@ -13,7 +13,7 @@
 [ext_resource path="res://images/particles/asteroids/asteroid4.png" type="Texture" id=11]
 [ext_resource path="res://images/particles/asteroids/asteroid5.png" type="Texture" id=12]
 [ext_resource path="res://images/white_square.png" type="Texture" id=13]
-[ext_resource path="res://src/addons/Camera2D.gd" type="Script" id=14]
+[ext_resource path="res://src/addons/Screenshake.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.240741, 0.734568, 1 )
@@ -26,7 +26,9 @@ colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 3 )
 
-[node name="Level1" type="Node2D"]
+[node name="Level1" type="Node2D" groups=[
+"levels",
+]]
 script = ExtResource( 2 )
 
 [node name="Particles" type="Node" parent="."]
@@ -192,10 +194,12 @@ position = Vector2( 31.9273, 8 )
 position = Vector2( 34, 44 )
 
 [node name="Wall1" parent="Obstacles" instance=ExtResource( 6 )]
+visible = false
 position = Vector2( -37, -45 )
 scale = Vector2( 1, 40 )
 
 [node name="Wall2" parent="Obstacles" instance=ExtResource( 6 )]
+visible = false
 position = Vector2( 30, -45 )
 scale = Vector2( 1, 40 )
 
@@ -231,8 +235,8 @@ __meta__ = {
 
 [node name="Addons" type="Node2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="Addons"]
-script = ExtResource( 14 )
-decay = null
-max_offset = null
-max_roll = null
+[node name="Camera" type="Camera2D" parent="Addons"]
+position = Vector2( 32, 32 )
+current = true
+
+[node name="Screenshake" parent="Addons/Camera" instance=ExtResource( 14 )]

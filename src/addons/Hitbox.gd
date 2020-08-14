@@ -13,5 +13,6 @@ func setup(tg):
 func _on_Hitbox_body_entered(body):
 	if body.is_in_group(target_group):
 #		body.damage(1)
+		get_tree().call_group("levels", "screenshake")
 		body.damage()
 		host.queue_free()
