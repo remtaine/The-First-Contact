@@ -12,7 +12,7 @@ onready var duration = $DurationTimer
 var amplitude = 0
 var priority = 0
 
-func start(priority = 0, d = 0.1, f = 15, amplitude = 1):
+func start(priority = 0, d = 0.2, f = 15, amplitude = 1):
 	if self.priority <= priority:
 		self.priority = priority 
 		self.amplitude = amplitude + priority * 3 

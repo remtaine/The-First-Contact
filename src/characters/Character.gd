@@ -28,7 +28,6 @@ func _ready():
 			possible_states[child.state_name] = child
 			if _state == null:
 				_state = child
-	print(_state.state_name)
 
 func _physics_process(delta):
 	var input = _state.get_raw_input()
@@ -38,7 +37,6 @@ func _physics_process(delta):
 func change_state(state_name, repeat = false):
 	var new_state = possible_states[state_name]
 	if _state != new_state or repeat:
-		print("STATE IS ", state_name)
 		exit_state()
 		_state = new_state
 		enter_state()
@@ -54,9 +52,8 @@ func change_direction(dir = "idle"):
 
 func damage(dmg = 1):
 	var d = death_particle_resource.instance()
-	d.global_position = global_position
+	d.setup(global_position, color)
 	object_holder.add_child(d)
-	d.emitting = true
 	queue_free()
 #	health.update(1)
 

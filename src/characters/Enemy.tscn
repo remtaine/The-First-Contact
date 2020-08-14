@@ -19,10 +19,12 @@ color = Color( 0, 0.894118, 0.211765, 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "8"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.0521696, -0.123181 )
+scale = Vector2( 1.08, 1.08 )
 shape = SubResource( 1 )
 
 [node name="States" type="Node2D" parent="."]

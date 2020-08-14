@@ -2,7 +2,6 @@ class_name Spaceship
 extends Character
 
 var is_flipped : bool = false
-
 onready var tween = $Tween
 onready var shot_cd = $Timers/ShotCooldown
 onready var bullet_point = $BulletPoint
@@ -38,7 +37,6 @@ func spawn_bullet():
 
 
 func _on_Tween_tween_completed(object, key):
-	print(key)
 	if key == ":scale":
 		play_sound("move")
 		yield(get_tree().create_timer(0.5), "timeout")

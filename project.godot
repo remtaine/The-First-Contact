@@ -83,6 +83,11 @@ _global_script_classes=[ {
 "class": "UFO",
 "language": "GDScript",
 "path": "res://src/characters/UFO.gd"
+}, {
+"base": "Sprite",
+"class": "Warning",
+"language": "GDScript",
+"path": "res://src/HUD/Warning.gd"
 } ]
 _global_script_class_icons={
 "Bombs": "",
@@ -99,7 +104,8 @@ _global_script_class_icons={
 "Spaceship": "",
 "State": "",
 "Stats": "",
-"UFO": ""
+"UFO": "",
+"Warning": ""
 }
 
 [application]

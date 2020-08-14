@@ -14,5 +14,6 @@ func _on_Hitbox_body_entered(body):
 	if body.is_in_group(target_group):
 #		body.damage(1)
 		get_tree().call_group("levels", "screenshake")
+		get_tree().call_group("levels", "update_score", 100)
 		body.damage()
 		host.queue_free()

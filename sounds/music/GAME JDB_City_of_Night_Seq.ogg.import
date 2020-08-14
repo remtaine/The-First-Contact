@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GAME JDB_City_of_Night_Seq.ogg-1e43da34f2ffe93b62f9f2e38c6f5689.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/GAME JDB_City_of_Night_Seq.ogg"
+dest_files=[ "res://.import/GAME JDB_City_of_Night_Seq.ogg-1e43da34f2ffe93b62f9f2e38c6f5689.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
