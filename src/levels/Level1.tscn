@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/characters/Spaceship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/levels/Level.gd" type="Script" id=2]
@@ -7,12 +7,21 @@
 [ext_resource path="res://src/characters/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/world/Wall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://images/pico8_invaders_sprites_LARGE v2.png" type="Texture" id=7]
+[ext_resource path="res://images/particles/asteroids/asteroid1.png" type="Texture" id=8]
+[ext_resource path="res://images/particles/asteroids/asteroid3.png" type="Texture" id=9]
+[ext_resource path="res://images/particles/asteroids/asteroid2.png" type="Texture" id=10]
+[ext_resource path="res://images/particles/asteroids/asteroid4.png" type="Texture" id=11]
+[ext_resource path="res://images/particles/asteroids/asteroid5.png" type="Texture" id=12]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.240741, 0.734568, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="TileSet" id=3]
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.0728477, 0.910596, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="TileSet" id=2]
 0/name = "pico8_invaders_sprites_LARGE v2.png 0"
 0/texture = ExtResource( 7 )
 0/tex_offset = Vector2( 0, 0 )
@@ -98,7 +107,7 @@ colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 5/shapes = [  ]
 5/z_index = 0
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 3 )
 
 [node name="Level1" type="Node2D"]
@@ -110,7 +119,7 @@ script = ExtResource( 2 )
 [node name="Starfield" type="CPUParticles2D" parent="Particles"]
 self_modulate = Color( 0.113725, 0.168627, 0.32549, 1 )
 position = Vector2( 32, 36 )
-z_index = -1
+z_index = -100
 amount = 12
 lifetime = 4.0
 preprocess = 8.0
@@ -122,25 +131,129 @@ gravity = Vector2( 0, 0 )
 angular_velocity_random = 1.0
 color_ramp = SubResource( 1 )
 
+[node name="Asteroids" type="Node2D" parent="Particles"]
+position = Vector2( 0, -6.68513 )
+
+[node name="Asteroid1" type="CPUParticles2D" parent="Particles/Asteroids"]
+self_modulate = Color( 0.294118, 0.294118, 0.294118, 1 )
+position = Vector2( 32, 0 )
+z_index = -20
+z_as_relative = false
+amount = 1
+lifetime = 15.0
+preprocess = 15.0
+draw_order = 1
+texture = ExtResource( 8 )
+emission_shape = 2
+emission_rect_extents = Vector2( 32, 1 )
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 0.35
+color_ramp = SubResource( 4 )
+
+[node name="Asteroid2" type="CPUParticles2D" parent="Particles/Asteroids"]
+self_modulate = Color( 0.294118, 0.294118, 0.294118, 1 )
+position = Vector2( 32, 0 )
+z_index = -20
+z_as_relative = false
+amount = 1
+lifetime = 15.0
+preprocess = 10.0
+draw_order = 1
+texture = ExtResource( 10 )
+emission_shape = 2
+emission_rect_extents = Vector2( 32, 1 )
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 0.35
+color_ramp = SubResource( 4 )
+
+[node name="Asteroid3" type="CPUParticles2D" parent="Particles/Asteroids"]
+self_modulate = Color( 0.294118, 0.294118, 0.294118, 1 )
+position = Vector2( 32, 0 )
+z_index = -20
+z_as_relative = false
+amount = 2
+lifetime = 15.0
+preprocess = 7.0
+draw_order = 1
+texture = ExtResource( 9 )
+emission_shape = 2
+emission_rect_extents = Vector2( 32, 1 )
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 0.35
+color_ramp = SubResource( 4 )
+
+[node name="Asteroid4" type="CPUParticles2D" parent="Particles/Asteroids"]
+self_modulate = Color( 0.294118, 0.294118, 0.294118, 1 )
+position = Vector2( 32, 0 )
+z_index = -20
+z_as_relative = false
+amount = 1
+lifetime = 15.0
+preprocess = 18.0
+draw_order = 1
+texture = ExtResource( 11 )
+emission_shape = 2
+emission_rect_extents = Vector2( 32, 1 )
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 0.35
+color_ramp = SubResource( 4 )
+
+[node name="Asteroid5" type="CPUParticles2D" parent="Particles/Asteroids"]
+self_modulate = Color( 0.294118, 0.294118, 0.294118, 1 )
+position = Vector2( 32, 0 )
+z_index = -20
+z_as_relative = false
+amount = 2
+lifetime = 15.0
+preprocess = 23.0
+draw_order = 1
+texture = ExtResource( 12 )
+emission_shape = 2
+emission_rect_extents = Vector2( 32, 1 )
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 0.35
+color_ramp = SubResource( 4 )
+
 [node name="Characters" type="Node" parent="."]
 
 [node name="Spaceship" parent="Characters" instance=ExtResource( 1 )]
 position = Vector2( 32, 48 )
 
 [node name="Enemy1" parent="Characters" instance=ExtResource( 5 )]
-position = Vector2( 36, 8 )
+position = Vector2( 37.2232, 8 )
 
 [node name="Enemy2" parent="Characters" instance=ExtResource( 5 )]
-position = Vector2( 44, 8 )
+position = Vector2( 46.2232, 8 )
+
+[node name="Enemy7" parent="Characters" instance=ExtResource( 5 )]
+position = Vector2( 55.2232, 8 )
 
 [node name="Enemy3" parent="Characters" instance=ExtResource( 5 )]
-position = Vector2( 12, 8 )
+position = Vector2( 10.2232, 8 )
+
+[node name="Enemy6" parent="Characters" instance=ExtResource( 5 )]
+position = Vector2( 1.22322, 8 )
 
 [node name="Enemy4" parent="Characters" instance=ExtResource( 5 )]
-position = Vector2( 20, 8 )
+position = Vector2( 19.2232, 8 )
 
 [node name="Enemy5" parent="Characters" instance=ExtResource( 5 )]
-position = Vector2( 28, 8 )
+position = Vector2( 28.2232, 8 )
 
 [node name="Objects" type="Node" parent="."]
 
@@ -154,14 +267,16 @@ scale = Vector2( 1, 40 )
 position = Vector2( 30, -45 )
 scale = Vector2( 1, 40 )
 
-[node name="Spaceship" type="TileMap" parent="Obstacles"]
+[node name="Spaceship2" type="Node2D" parent="Obstacles"]
+
+[node name="Spaceship1" type="TileMap" parent="Obstacles/Spaceship2"]
 position = Vector2( -2.25, 0 )
-tile_set = SubResource( 3 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 8, 8 )
 format = 1
 tile_data = PoolIntArray( 131071, 4, 0, 65536, 5, 0 )
 
-[node name="ColorRect" type="ColorRect" parent="Obstacles"]
+[node name="ColorRect" type="ColorRect" parent="Obstacles/Spaceship2"]
 margin_left = -22.5351
 margin_top = 18.3863
 margin_right = 17.4649
@@ -171,9 +286,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tilemap2" type="TileMap" parent="Obstacles"]
+[node name="Tilemap2" type="TileMap" parent="Obstacles/Spaceship2"]
 position = Vector2( -2.25, -2 )
-tile_set = SubResource( 3 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 8, 8 )
 format = 1
 tile_data = PoolIntArray( 196605, 0, 0, 196606, 3, 0, 196607, 2, 0, 131072, 3, 0, 131073, 3, 0, 131074, 1, 0 )
@@ -194,7 +309,7 @@ margin_left = 25.1459
 margin_top = -3.90014
 margin_right = 39.1459
 margin_bottom = 8.09986
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "345"
 align = 1
 __meta__ = {

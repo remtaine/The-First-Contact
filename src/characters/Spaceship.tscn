@@ -6,7 +6,7 @@
 [ext_resource path="res://src/states/Moving.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/stats/Health.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/stats/Bombs.tscn" type="PackedScene" id=6]
-[ext_resource path="res://images/spaceship.png" type="Texture" id=7]
+[ext_resource path="res://images/particles/spaceship.png" type="Texture" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -83,7 +83,6 @@ speed = 40
 [node name="ShotCooldown" type="Timer" parent="Timers"]
 wait_time = 0.5
 one_shot = true
-autostart = true
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -104,6 +103,7 @@ __meta__ = {
 [node name="Bombs" parent="HUD/Stats" instance=ExtResource( 6 )]
 
 [node name="Particles" type="Node2D" parent="."]
+visible = false
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Particles"]
 self_modulate = Color( 1, 0, 1, 0.490196 )
@@ -124,3 +124,4 @@ color_ramp = SubResource( 6 )
 
 [node name="Move" type="AudioStreamPlayer2D" parent="Audio"]
 [connection signal="timeout" from="Timers/ShotCooldown" to="." method="_on_ShotCooldown_timeout"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
