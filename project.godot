@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/levels/Level.gd"
 }, {
+"base": "Node2D",
+"class": "MainMenu",
+"language": "GDScript",
+"path": "res://src/menus/MainMenu.gd"
+}, {
 "base": "State",
 "class": "Moving",
 "language": "GDScript",
@@ -79,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/stats/Stats.gd"
 }, {
+"base": "Node2D",
+"class": "StoryMenu",
+"language": "GDScript",
+"path": "res://src/menus/StoryMenu.gd"
+}, {
 "base": "Character",
 "class": "UFO",
 "language": "GDScript",
@@ -99,11 +109,13 @@ _global_script_class_icons={
 "Hitbox": "",
 "Idle": "",
 "Level": "",
+"MainMenu": "",
 "Moving": "",
 "Screenshake": "",
 "Spaceship": "",
 "State": "",
 "Stats": "",
+"StoryMenu": "",
 "UFO": "",
 "Warning": ""
 }

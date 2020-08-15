@@ -55,12 +55,14 @@ func change_direction(dir = "idle"):
 func damage(dmg = 1):
 	#TODO do damaged only
 	#for death
-	sprite.visible = false
-	is_dead = true
+#	sprite.visible = false
+#	is_dead = true
+#	$CollisionShape2D.disabled = true
 	var d = death_particle_resource.instance()
 	d.setup(global_position, color)
 	object_holder.add_child(d)
-	play_sound("die")
+	queue_free()
+#	play_sound("die")
 #	health.update(1)
 
 func play_sound(sound):
@@ -80,5 +82,6 @@ func play_sound(sound):
 
 
 func _on_Hurt_finished():
-	if audio_hurt.stream == sound_die:
-		queue_free()	
+	pass
+#	if audio_hurt.stream == sound_die:
+			

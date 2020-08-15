@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/typing.ogg-7a3b0c3863aa1812176d33b0a9d4607e.oggstr"
+
+[deps]
+
+source_file="res://sounds/sfx/menus/typing.ogg"
+dest_files=[ "res://.import/typing.ogg-7a3b0c3863aa1812176d33b0a9d4607e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

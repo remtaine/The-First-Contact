@@ -12,15 +12,20 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 8, 0, 8, 8 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
+"loop": false,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
 "loop": false,
 "name": "left",
 "speed": 5.0
@@ -29,17 +34,12 @@ animations = [ {
 "loop": false,
 "name": "right",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 3 ) ],
-"loop": false,
-"name": "idle",
-"speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 58.6712, 48.9723 )
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.244936, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
@@ -49,7 +49,7 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 4 )
+frames = SubResource( 3 )
 animation = "right"
 playing = true
 
@@ -57,7 +57,7 @@ playing = true
 visible = false
 position = Vector2( -0.00330259, 0.405258 )
 scale = Vector2( 0.0680558, 0.0689106 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Heart" type="ColorRect" parent="."]
 visible = false
@@ -116,7 +116,7 @@ local_coords = false
 draw_order = 1
 texture = ExtResource( 7 )
 gravity = Vector2( 0, 0 )
-color_ramp = SubResource( 6 )
+color_ramp = SubResource( 5 )
 
 [node name="Audio" type="Node" parent="."]
 

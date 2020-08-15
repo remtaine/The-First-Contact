@@ -237,7 +237,7 @@ frame = 1
 playing = true
 
 [node name="5" type="AnimatedSprite" parent="Characters"]
-position = Vector2( 8.0511, 34.152 )
+position = Vector2( 7.56133, 32.0705 )
 rotation = 0.294316
 frames = ExtResource( 4 )
 animation = "5"
@@ -273,13 +273,14 @@ __meta__ = {
 }
 
 [node name="StartLabel" type="Label" parent="Labels"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = -0.107925
 margin_top = 26.2532
 margin_right = 54.8921
 margin_bottom = 45.2532
 custom_fonts/font = SubResource( 4 )
 custom_constants/line_spacing = -5
-text = "Press J
+text = "Press J/Z
 to Start"
 align = 1
 __meta__ = {
@@ -304,8 +305,10 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-margin_right = 64.0
-margin_bottom = 64.0
+margin_left = -0.489765
+margin_top = -2.0815
+margin_right = 63.5102
+margin_bottom = 61.9185
 __meta__ = {
 "_edit_use_anchors_": false
 }

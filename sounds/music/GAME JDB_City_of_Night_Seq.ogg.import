@@ -12,4 +12,4 @@ dest_files=[ "res://.import/GAME JDB_City_of_Night_Seq.ogg-1e43da34f2ffe93b62f9f
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=0.0

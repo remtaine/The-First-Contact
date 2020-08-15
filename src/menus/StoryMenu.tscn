@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://fonts/Pixels TEXT.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/menus/StoryMenu.gd" type="Script" id=2]
+[ext_resource path="res://images/particles/UFO on pipes.png" type="Texture" id=3]
+[ext_resource path="res://src/addons/FlashAnimation.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/addons/Particles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sounds/sfx/menus/typing.ogg" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 2.001, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="StoryMenu" type="Node2D"]
+script = ExtResource( 2 )
+duration = 10.5
+
+[node name="StoryLabel" type="Label" parent="."]
+margin_left = 1.22569
+margin_top = 3.17189
+margin_right = 61.2257
+margin_bottom = 64.1719
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -1
+text = "During your patrol, you noticed an abandoned UFO stranded in space.
+
+Finally, your kind can research this alien tech to unlock FTL travel.
+
+While checking it out,  a horde of aliens headed your way! They don't look happy with you unlocking new tech, and are ready to destroy the UFO.
+
+Protect it at all costs!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueLabel" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 2.45786
+margin_top = 43.8278
+margin_right = 62.4579
+margin_bottom = 50.8278
+custom_fonts/font = SubResource( 2 )
+text = "Press J/Z to continue"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlashAnimation" parent="ContinueLabel" instance=ExtResource( 4 )]
+anims/idle = SubResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="UFO" type="Sprite" parent="."]
+position = Vector2( 31.75, 58 )
+texture = ExtResource( 3 )
+
+[node name="Particles" parent="." instance=ExtResource( 5 )]
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Type" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 6 )
+autoplay = true
