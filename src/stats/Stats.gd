@@ -24,7 +24,8 @@ func update(v = 0):
 func draw():
 	if not hide:
 		for i in range(0, get_child_count()):
-			if i < value:
-				get_child(i).visible = true
-			else:
-				get_child(i).visible = false
+			if get_child(i) is Sprite:
+				if i < value:
+					get_child(i).visible = true
+				else:
+					get_child(i).visible = false

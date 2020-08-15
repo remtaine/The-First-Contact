@@ -23,10 +23,12 @@ func _process(delta):
 	story.text = total_text.left(letters)
 	if letters == total_text.length() and not cont_anim.is_playing():
 		fully_on()
-	elif story.text.ends_with("."):# or story.text.ends_with("!"):
-		audio_type.stop()
-		yield(get_tree().create_timer(0.3), "timeout")
-		audio_type.play()	
+	elif story.text.ends_with(".") and not cont_anim.is_playing():# or story.text.ends_with("!"):
+		tween.stop_all()		
+		audio_type.stream_paused = true
+		yield(get_tree().create_timer(0.5), "timeout")
+		tween.resume_all()
+		audio_type.stream_paused = false
 
 func fully_on():
 	story.text = total_text

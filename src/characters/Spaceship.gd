@@ -9,7 +9,7 @@ onready var shot_line = $Addons/ShotLine
 #onready var sound_hurt = preload("")
 
 onready var particles = $Particles
-
+onready var hp_holder = $HUD/Stats/Health
 onready var bullet_resource := preload("res://src/objects/Bullet.tscn")
 
 func _ready():
@@ -50,9 +50,12 @@ func spawn_bullet():
 	object_holder.add_child(b)
 
 func damage(dmg = 1):
-	.damage(dmg)
-	show_other_parts(false)
-#	health.update(1)
+	hp_holder.update(dmg)
+	if hp_holder.value > 0:
+		play_sound("hurt")
+	else:
+		.damage(dmg)
+		show_other_parts(false)	
 
 func show_other_parts(t = true):
 	particles.visible = t
@@ -65,3 +68,4 @@ func _on_Tween_tween_completed(object, key):
 		show_other_parts()
 		set_physics_process(true)
 #		_on_ShotCooldown_timeout()
+

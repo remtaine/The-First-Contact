@@ -8,7 +8,7 @@
 [ext_resource path="res://src/addons/Hitbox.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.97431, 4.03308 )
+extents = Vector2( 3.6998, 3.81652 )
 
 [node name="Enemy" type="KinematicBody2D" groups=[
 "enemies",
@@ -19,7 +19,6 @@ color = Color( 0, 0.894118, 0.211765, 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "8"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -32,7 +31,7 @@ shape = SubResource( 1 )
 [node name="Idle" parent="States" instance=ExtResource( 3 )]
 
 [node name="Moving" parent="States" instance=ExtResource( 4 )]
-speed = 4
+speed = 2
 
 [node name="Stats" type="Node2D" parent="."]
 
@@ -41,12 +40,12 @@ hide = true
 
 [node name="Audio" type="Node2D" parent="."]
 
-[node name="Hurt" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="Hurt" type="AudioStreamPlayer" parent="Audio"]
 
 [node name="Addons" type="Node2D" parent="."]
 
 [node name="Hitbox" parent="Addons" instance=ExtResource( 6 )]
-position = Vector2( -0.00477147, 0.49797 )
-scale = Vector2( 0.400001, 0.479999 )
+position = Vector2( -0.0279114, -0.0342375 )
+scale = Vector2( 0.439998, 0.439998 )
 target_group = "allies"
 [connection signal="finished" from="Audio/Hurt" to="." method="_on_Hurt_finished"]

@@ -11,6 +11,7 @@ extents = Vector2( 40.6785, 5.43428 )
 
 [node name="UFO" type="KinematicBody2D" groups=[
 "allies",
+"structures",
 ]]
 script = ExtResource( 3 )
 
@@ -47,3 +48,7 @@ hide = true
 
 [node name="Idle" parent="States" instance=ExtResource( 4 )]
 type = "structure"
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Audio"]

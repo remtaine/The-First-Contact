@@ -16,7 +16,6 @@ func _process(delta):
 
 func draw():
 	if raycast.is_colliding():
-		print("COLLIDING")
 		points[1].y = to_local(raycast.get_collision_point()).y
 	else:
 		points[1] = (raycast.cast_to)

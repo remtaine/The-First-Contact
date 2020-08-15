@@ -11,7 +11,9 @@ extents = Vector2( 12.3048, 12.4024 )
 offsets = PoolRealArray( 0, 0.224678, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.801105, 0.801105, 0.801105, 1, 1, 1, 1, 0 )
 
-[node name="Bullet" type="KinematicBody2D"]
+[node name="Bullet" type="KinematicBody2D" groups=[
+"bullets",
+]]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

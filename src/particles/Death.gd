@@ -12,3 +12,6 @@ func setup(pos, c = Color.white):
 	emitting = true
 	$Audio.stream = sound
 	$Audio.play()
+
+func _on_Audio_finished():
+	queue_free()

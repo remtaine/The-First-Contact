@@ -12,20 +12,15 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 8, 8 )
+region = Rect2( 8, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 8, 0, 8, 8 )
+region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
-"loop": false,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 2 ) ],
 "loop": false,
 "name": "left",
 "speed": 5.0
@@ -33,6 +28,11 @@ animations = [ {
 "frames": [ ExtResource( 9 ) ],
 "loop": false,
 "name": "right",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": false,
+"name": "idle",
 "speed": 5.0
 } ]
 
@@ -120,11 +120,12 @@ color_ramp = SubResource( 5 )
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="Hurt" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="Hurt" type="AudioStreamPlayer" parent="Audio"]
 
-[node name="Shoot" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="Shoot" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -5.0
 
-[node name="Move" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="Move" type="AudioStreamPlayer" parent="Audio"]
 
 [node name="Addons" type="Node2D" parent="."]
 
