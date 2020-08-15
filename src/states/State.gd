@@ -5,23 +5,32 @@ extends Node2D
 export var state_name = "State"
 onready var host = get_parent().get_parent()
 export var type = "bot"
+
+var inputs = {
+	is_moving = false,
+	input_direction = Vector2.ZERO,
+	is_shooting = false
+}
+
 func get_raw_input() -> Dictionary:
-	var inputs
 	match type:
 		"bot":
 			inputs = {
 				is_moving = true,
-				input_direction = Vector2.DOWN
+				input_direction = Vector2.DOWN,
+				is_shooting = false
 			}	
 		"structure":
 			inputs = {
 				is_moving = false,
-				input_direction = Vector2.ZERO
+				input_direction = Vector2.ZERO,
+				is_shooting = false
 			}
 		_:
 			inputs = {
 				is_moving = Input.is_action_pressed("move_down") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_up"),
-				input_direction = get_input_direction()
+				input_direction = get_input_direction(),
+				is_shooting = Input.is_action_pressed("shoot")
 			}
 	return inputs
 	

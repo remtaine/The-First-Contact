@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://images/pico8_invaders_sprites_LARGE v2.png" type="Texture" id=1]
 [ext_resource path="res://src/characters/Spaceship.gd" type="Script" id=2]
@@ -7,14 +7,12 @@
 [ext_resource path="res://src/stats/Health.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/stats/Bombs.tscn" type="PackedScene" id=6]
 [ext_resource path="res://images/particles/spaceship.png" type="Texture" id=7]
+[ext_resource path="res://src/addons/ShotLine.tscn" type="PackedScene" id=8]
+[ext_resource path="res://images/spaceship/space_ship right.png" type="Texture" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 8, 0, 8, 8 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
@@ -27,7 +25,7 @@ animations = [ {
 "name": "left",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 2 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": false,
 "name": "right",
 "speed": 5.0
@@ -52,7 +50,7 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
-animation = "idle"
+animation = "right"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -80,12 +78,12 @@ type = "player"
 
 [node name="Moving" parent="States" instance=ExtResource( 4 )]
 type = "player"
-speed = 40
+speed = 20
 
 [node name="Timers" type="Node2D" parent="."]
 
 [node name="ShotCooldown" type="Timer" parent="Timers"]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
 
 [node name="Tween" type="Tween" parent="."]
@@ -127,5 +125,12 @@ color_ramp = SubResource( 6 )
 [node name="Shoot" type="AudioStreamPlayer2D" parent="Audio"]
 
 [node name="Move" type="AudioStreamPlayer2D" parent="Audio"]
+
+[node name="Addons" type="Node2D" parent="."]
+
+[node name="ShotLine" parent="Addons" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 0, -3.03432 )
+width = 0.2
 [connection signal="timeout" from="Timers/ShotCooldown" to="." method="_on_ShotCooldown_timeout"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

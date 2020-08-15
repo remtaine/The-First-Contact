@@ -210,6 +210,7 @@ position = Vector2( 7.30411, 48.6936 )
 rotation = -0.523047
 frames = ExtResource( 4 )
 animation = "1"
+frame = 1
 playing = true
 
 [node name="2" type="AnimatedSprite" parent="Characters"]
@@ -217,6 +218,7 @@ position = Vector2( 57.7028, 47.2556 )
 rotation = 0.258358
 frames = ExtResource( 4 )
 animation = "2"
+frame = 1
 playing = true
 
 [node name="3" type="AnimatedSprite" parent="Characters"]
@@ -224,12 +226,14 @@ position = Vector2( 58.6863, 31.6218 )
 rotation = 0.719793
 frames = ExtResource( 4 )
 animation = "3"
+frame = 1
 playing = true
 
 [node name="4" type="AnimatedSprite" parent="Characters"]
 position = Vector2( 6.47517, 19.3417 )
 frames = ExtResource( 4 )
 animation = "4"
+frame = 1
 playing = true
 
 [node name="5" type="AnimatedSprite" parent="Characters"]
@@ -237,13 +241,13 @@ position = Vector2( 8.0511, 34.152 )
 rotation = 0.294316
 frames = ExtResource( 4 )
 animation = "5"
+frame = 1
 playing = true
 
 [node name="6" type="AnimatedSprite" parent="Characters"]
 position = Vector2( 41.3065, 10.2179 )
 frames = ExtResource( 4 )
 animation = "6"
-frame = 1
 playing = true
 
 [node name="Labels" type="Control" parent="."]

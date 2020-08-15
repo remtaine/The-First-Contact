@@ -11,6 +11,7 @@ func _ready():
 
 func setup(dir,pos):
 	global_position = pos
+	global_position.y -= 2
 	direction = dir
 	velocity = speed * direction
 

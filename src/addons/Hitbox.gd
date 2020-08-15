@@ -11,7 +11,7 @@ func setup(tg):
 	target_group = tg
 	
 func _on_Hitbox_body_entered(body):
-	if body.is_in_group(target_group):
+	if body.is_in_group(target_group) and not body.is_dead:
 #		body.damage(1)
 		get_tree().call_group("levels", "screenshake")
 		get_tree().call_group("levels", "update_score", 100)

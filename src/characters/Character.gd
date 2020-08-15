@@ -22,6 +22,8 @@ onready var sound_move = preload("res://sounds/sfx/move.wav")
 onready var death_particle_resource = preload("res://src/particles/Death.tscn")
 export var color = Color.white
 
+var is_dead = false
+
 func _ready():
 	if states_holder != null:
 		for child in states_holder.get_children():
@@ -51,10 +53,14 @@ func change_direction(dir = "idle"):
 	pass
 
 func damage(dmg = 1):
+	#TODO do damaged only
+	#for death
+	sprite.visible = false
+	is_dead = true
 	var d = death_particle_resource.instance()
 	d.setup(global_position, color)
 	object_holder.add_child(d)
-	queue_free()
+	play_sound("die")
 #	health.update(1)
 
 func play_sound(sound):
@@ -71,3 +77,8 @@ func play_sound(sound):
 		"move":
 			audio_move.stream = sound_move
 			audio_move.play()
+
+
+func _on_Hurt_finished():
+	if audio_hurt.stream == sound_die:
+		queue_free()	

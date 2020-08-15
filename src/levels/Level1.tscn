@@ -224,6 +224,7 @@ margin_top = -3.90014
 margin_right = 64.0
 margin_bottom = 8.09986
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 text = "345"
 align = 1
 __meta__ = {
@@ -231,7 +232,6 @@ __meta__ = {
 }
 
 [node name="LetsGo" parent="HUD/Control" instance=ExtResource( 15 )]
-modulate = Color( 1, 1, 1, 0.333333 )
 
 [node name="Spawners" type="Node" parent="."]
 

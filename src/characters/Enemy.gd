@@ -26,7 +26,8 @@ func _ready():
 		7: #ie gold
 			color = Color("ffa300")			
 		8: #ie dark green
-			color = Color("008751")				
+			color = Color("008751")
+			
 func setup(pos, lives):
 	global_position = pos
 	hp = lives

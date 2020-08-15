@@ -32,7 +32,7 @@ shape = SubResource( 1 )
 [node name="Idle" parent="States" instance=ExtResource( 3 )]
 
 [node name="Moving" parent="States" instance=ExtResource( 4 )]
-speed = 8
+speed = 4
 
 [node name="Stats" type="Node2D" parent="."]
 
@@ -49,3 +49,4 @@ hide = true
 position = Vector2( -0.00477147, 0.49797 )
 scale = Vector2( 0.400001, 0.479999 )
 target_group = "allies"
+[connection signal="finished" from="Audio/Hurt" to="." method="_on_Hurt_finished"]

@@ -10,6 +10,7 @@ onready var tween = $Tween
 
 func _ready():
 	state_name = "moving"
+	
 func enter():
 	pass
 
@@ -17,6 +18,7 @@ func run(input):
 	direction = input.input_direction.normalized()
 	velocity = direction * speed
 #	host.move_and_slide(velocity)
+
 	if velocity.x < 0:
 		host.is_flipped = false
 		host.change_direction("left")
