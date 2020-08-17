@@ -1,0 +1,226 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://fonts/Pixels TEXT.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/design/Character Images.tscn" type="PackedScene" id=2]
+[ext_resource path="res://images/particles/UFO on pipes.png" type="Texture" id=3]
+[ext_resource path="res://src/addons/FlashAnimation.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/addons/Particles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sounds/sfx/menus/typing.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sounds/sfx/menus/confirmation_001.ogg" type="AudioStream" id=7]
+[ext_resource path="res://src/menus/ConditionMenu.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 2.001, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 2.001, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="ConditionMenu" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Labels" type="Node2D" parent="."]
+
+[node name="Top" type="Node2D" parent="Labels"]
+
+[node name="TitleLabel" type="Label" parent="Labels/Top"]
+margin_left = 1.40545
+margin_top = -3.39943
+margin_right = 61.4055
+margin_bottom = 57.6006
+custom_fonts/font = SubResource( 6 )
+custom_constants/line_spacing = -1
+text = "Game Over!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Node2D" parent="Labels"]
+position = Vector2( -6.7863, -0.825844 )
+
+[node name="ScoreLabel" type="Label" parent="Labels/Left"]
+margin_left = 26.9098
+margin_top = 13.2973
+margin_right = 86.9099
+margin_bottom = 74.2973
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -1
+text = "Score:"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Node2D" parent="Labels"]
+position = Vector2( -11.3469, -0.825844 )
+
+[node name="FinalScoreLabel" type="Label" parent="Labels/Right"]
+margin_left = 13.3307
+margin_top = 20.8641
+margin_right = 73.3307
+margin_bottom = 81.8641
+custom_fonts/font = SubResource( 8 )
+custom_constants/line_spacing = -1
+text = "3850"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="Node2D" parent="Labels"]
+position = Vector2( 2.45786, 37.521 )
+
+[node name="ContinueLabel" type="Label" parent="Labels/Bottom"]
+margin_right = 60.0
+margin_bottom = 7.0
+custom_fonts/font = SubResource( 2 )
+text = "Press R to play again"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlashAnimation" parent="Labels/Bottom/ContinueLabel" instance=ExtResource( 4 )]
+anims/idle = SubResource( 3 )
+
+[node name="MenuLabel" type="Label" parent="Labels/Bottom"]
+margin_top = 5.0406
+margin_right = 60.0
+margin_bottom = 12.0406
+custom_fonts/font = SubResource( 2 )
+text = "Press M to go to menu"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlashAnimation" parent="Labels/Bottom/MenuLabel" instance=ExtResource( 4 )]
+anims/aaidle = SubResource( 4 )
+anims/idle = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Labels"]
+autoplay = "appear"
+anims/appear = SubResource( 7 )
+
+[node name="Characters" parent="Labels" instance=ExtResource( 2 )]
+position = Vector2( -0.188618, 2.16912 )
+
+[node name="1" parent="Labels/Characters" index="0"]
+frame = 1
+
+[node name="2" parent="Labels/Characters" index="1"]
+frame = 1
+
+[node name="3" parent="Labels/Characters" index="2"]
+frame = 1
+
+[node name="4" parent="Labels/Characters" index="3"]
+frame = 1
+
+[node name="5" parent="Labels/Characters" index="4"]
+position = Vector2( 6.7415, 32.0705 )
+frame = 1
+
+[node name="6" parent="Labels/Characters" index="5"]
+position = Vector2( 56.4733, 16.674 )
+rotation = 0.286341
+frame = 0
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="UFO" type="Sprite" parent="."]
+visible = false
+position = Vector2( 31.75, 58 )
+texture = ExtResource( 3 )
+
+[node name="Particles" parent="." instance=ExtResource( 5 )]
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Type" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 6 )
+
+[node name="Clicked" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 7 )
+
+[editable path="Labels/Characters"]

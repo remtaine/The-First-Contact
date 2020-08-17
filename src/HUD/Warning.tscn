@@ -39,8 +39,7 @@ tracks/0/keys = {
 }
 
 [node name="Warning" type="Sprite"]
-modulate = Color( 1, 1, 1, 0.333333 )
-position = Vector2( -64, 8 )
+position = Vector2( -32, 8 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
@@ -48,9 +47,7 @@ region_rect = Rect2( 0, 96, 64, 8 )
 script = ExtResource( 2 )
 
 [node name="MoveAnim" type="AnimationPlayer" parent="."]
-autoplay = "appear"
 anims/appear = SubResource( 1 )
 
 [node name="FlashAnim" type="AnimationPlayer" parent="."]
-autoplay = "appear"
 anims/appear = SubResource( 2 )

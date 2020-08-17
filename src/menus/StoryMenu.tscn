@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/Pixels TEXT.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/menus/StoryMenu.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/addons/FlashAnimation.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/addons/Particles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sounds/sfx/menus/typing.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sounds/sfx/menus/confirmation_001.ogg" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 6
@@ -15,7 +16,7 @@ font_data = ExtResource( 1 )
 size = 6
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "idle"
 length = 4.0
 loop = true
@@ -39,18 +40,22 @@ duration = 10.5
 
 [node name="StoryLabel" type="Label" parent="."]
 margin_left = 1.22569
-margin_top = 3.17189
+margin_top = 1.8718
 margin_right = 61.2257
-margin_bottom = 64.1719
+margin_bottom = 62.8718
 custom_fonts/font = SubResource( 1 )
 custom_constants/line_spacing = -1
-text = "During your patrol, you noticed an abandoned UFO stranded in space.
+text = "While on patrol, you see an abandoned UFO full of alien tech!
 
-Finally, your kind can research this alien tech to unlock FTL travel.
+Suddenly,  a horde of aliens headed your way. They don't look happy, and are ready to destroy the UFO!
 
-While checking it out,  a horde of aliens headed your way! They don't look happy with you unlocking new tech, and are ready to destroy the UFO.
+Protect it at all costs!
 
-Protect it at all costs!"
+WASD/Arrow Keys to move
+J/Z to shoot
+K/X to bomb on-screen enemies
+
+shoot 3-in-a-row for combos!"
 align = 1
 autowrap = true
 __meta__ = {
@@ -60,9 +65,9 @@ __meta__ = {
 [node name="ContinueLabel" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 2.45786
-margin_top = 43.8278
+margin_top = 45.2362
 margin_right = 62.4579
-margin_bottom = 50.8278
+margin_bottom = 52.2362
 custom_fonts/font = SubResource( 2 )
 text = "Press J/Z to continue"
 align = 1
@@ -71,7 +76,7 @@ __meta__ = {
 }
 
 [node name="FlashAnimation" parent="ContinueLabel" instance=ExtResource( 4 )]
-anims/idle = SubResource( 4 )
+anims/idle = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -86,3 +91,6 @@ texture = ExtResource( 3 )
 [node name="Type" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 6 )
 autoplay = true
+
+[node name="Clicked" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 7 )

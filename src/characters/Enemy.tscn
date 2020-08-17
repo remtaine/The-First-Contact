@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/sprite frames/Enemy.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://src/characters/Enemy.gd" type="Script" id=2]
@@ -6,13 +6,38 @@
 [ext_resource path="res://src/states/Moving.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/stats/Health.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/addons/Hitbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://fonts/Pixels TEXT.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.6998, 3.81652 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "hurt"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ), Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Enemy" type="KinematicBody2D" groups=[
 "enemies",
 ]]
+collision_layer = 17
 script = ExtResource( 2 )
 color = Color( 0, 0.894118, 0.211765, 1 )
 
@@ -22,6 +47,7 @@ animation = "8"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -0.0521696, -0.123181 )
 scale = Vector2( 1.08, 1.08 )
 shape = SubResource( 1 )
@@ -31,7 +57,19 @@ shape = SubResource( 1 )
 [node name="Idle" parent="States" instance=ExtResource( 3 )]
 
 [node name="Moving" parent="States" instance=ExtResource( 4 )]
-speed = 2
+speed = 4
+
+[node name="HealthLabel" type="Label" parent="."]
+margin_left = -4.92204
+margin_top = -1.28732
+margin_right = -0.385397
+margin_bottom = 15.7127
+custom_fonts/font = SubResource( 2 )
+text = "1
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Stats" type="Node2D" parent="."]
 
@@ -45,7 +83,13 @@ hide = true
 [node name="Addons" type="Node2D" parent="."]
 
 [node name="Hitbox" parent="Addons" instance=ExtResource( 6 )]
+visible = false
 position = Vector2( -0.0279114, -0.0342375 )
 scale = Vector2( 0.439998, 0.439998 )
 target_group = "allies"
+
+[node name="RayCast2D" type="RayCast2D" parent="Addons"]
+
+[node name="HurtAnimation" type="AnimationPlayer" parent="Addons"]
+anims/hurt = SubResource( 3 )
 [connection signal="finished" from="Audio/Hurt" to="." method="_on_Hurt_finished"]

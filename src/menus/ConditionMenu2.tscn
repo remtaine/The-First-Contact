@@ -1,0 +1,327 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://fonts/Pixels TEXT.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/design/Character Images.tscn" type="PackedScene" id=2]
+[ext_resource path="res://images/particles/UFO on pipes.png" type="Texture" id=3]
+[ext_resource path="res://src/addons/FlashAnimation.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/addons/Particles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sounds/sfx/menus/typing.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sounds/sfx/menus/confirmation_001.ogg" type="AudioStream" id=7]
+[ext_resource path="res://src/menus/ConditionMenu.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 2.001, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+length = 4.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 2.001, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="ConditionMenu" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Labels" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Top" type="Node2D" parent="Labels"]
+
+[node name="TitleLabel" type="Label" parent="Labels/Top"]
+margin_left = 3.38595
+margin_top = 1.22175
+margin_right = 63.386
+margin_bottom = 62.2218
+custom_fonts/font = SubResource( 6 )
+custom_constants/line_spacing = -1
+text = "Game Over!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Node2D" parent="Labels"]
+position = Vector2( -6.7863, -0.825844 )
+
+[node name="CombosLabel" type="Label" parent="Labels/Left"]
+margin_left = 18.9878
+margin_top = 16.7036
+margin_right = 78.9878
+margin_bottom = 77.7037
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -1
+text = "Combos:"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpecificCombosLabel" type="Label" parent="Labels/Left"]
+margin_left = 28.3489
+margin_top = 20.064
+margin_right = 88.349
+margin_bottom = 81.0641
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -1
+text = "x3    
+x4 
+x5  
+x6"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemiesLabel" type="Label" parent="Labels/Left"]
+margin_left = 18.9878
+margin_top = 32.0654
+margin_right = 78.9878
+margin_bottom = 93.0655
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -1
+text = "Enemies"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DashLabel" type="Label" parent="Labels/Left"]
+margin_left = 18.9878
+margin_top = 34.3742
+margin_right = 78.9878
+margin_bottom = 95.3743
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -1
+text = "----------------------------"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="Labels/Left"]
+margin_left = 18.9878
+margin_top = 36.0259
+margin_right = 78.9878
+margin_bottom = 97.026
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -1
+text = "Score:"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Node2D" parent="Labels"]
+position = Vector2( -11.3469, -0.825844 )
+
+[node name="Numbers Label" type="Label" parent="Labels/Right"]
+margin_left = 39.0302
+margin_top = 16.7036
+margin_right = 99.0302
+margin_bottom = 77.7037
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -1
+text = "30
+17
+7
+4
+2
+105"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MultiplierLabel" type="Label" parent="Labels/Right"]
+margin_left = 44.3108
+margin_top = 20.064
+margin_right = 104.311
+margin_bottom = 81.0641
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -1
+text = "x 150
+x 200
+x 250
+x 300"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="Labels/Right"]
+margin_left = 55.7701
+margin_top = 19.944
+margin_right = 115.77
+margin_bottom = 80.9441
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -1
+text = "2850
+1400
+1000
+600
+5250"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FinalScoreLabel" type="Label" parent="Labels/Right"]
+margin_left = 55.7701
+margin_top = 36.0479
+margin_right = 115.77
+margin_bottom = 97.048
+custom_fonts/font = SubResource( 1 )
+custom_constants/line_spacing = -1
+text = "11100"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="Node2D" parent="Labels"]
+position = Vector2( 2.45786, 42.991 )
+
+[node name="ContinueLabel" type="Label" parent="Labels/Bottom"]
+margin_right = 60.0
+margin_bottom = 7.0
+custom_fonts/font = SubResource( 2 )
+text = "Press R to play again"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlashAnimation" parent="Labels/Bottom/ContinueLabel" instance=ExtResource( 4 )]
+anims/idle = SubResource( 3 )
+
+[node name="MenuLabel" type="Label" parent="Labels/Bottom"]
+margin_top = 5.0406
+margin_right = 60.0
+margin_bottom = 12.0406
+custom_fonts/font = SubResource( 2 )
+text = "Press M to go to menu"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlashAnimation" parent="Labels/Bottom/MenuLabel" instance=ExtResource( 4 )]
+anims/aaidle = SubResource( 4 )
+anims/idle = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Labels"]
+autoplay = "appear"
+anims/appear = SubResource( 7 )
+
+[node name="Characters" parent="Labels" instance=ExtResource( 2 )]
+
+[node name="1" parent="Labels/Characters" index="0"]
+frame = 1
+
+[node name="2" parent="Labels/Characters" index="1"]
+frame = 1
+
+[node name="3" parent="Labels/Characters" index="2"]
+frame = 1
+
+[node name="4" parent="Labels/Characters" index="3"]
+frame = 1
+
+[node name="5" parent="Labels/Characters" index="4"]
+position = Vector2( 6.7415, 32.0705 )
+frame = 1
+
+[node name="6" parent="Labels/Characters" index="5"]
+position = Vector2( 56.4733, 16.674 )
+rotation = 0.286341
+frame = 0
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="UFO" type="Sprite" parent="."]
+visible = false
+position = Vector2( 31.75, 58 )
+texture = ExtResource( 3 )
+
+[node name="Particles" parent="." instance=ExtResource( 5 )]
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Type" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 6 )
+
+[node name="Clicked" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 7 )
+
+[editable path="Labels/Characters"]

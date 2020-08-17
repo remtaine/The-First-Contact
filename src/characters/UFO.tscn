@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://images/particles/UFO on pipes.png" type="Texture" id=1]
 [ext_resource path="res://images/white_square.png" type="Texture" id=2]
@@ -8,6 +8,23 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40.6785, 5.43428 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "hurt"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ), Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="UFO" type="KinematicBody2D" groups=[
 "allies",
@@ -52,3 +69,8 @@ type = "structure"
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="Hurt" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="Addons" type="Node2D" parent="."]
+
+[node name="HurtAnimation" type="AnimationPlayer" parent="Addons"]
+anims/hurt = SubResource( 2 )

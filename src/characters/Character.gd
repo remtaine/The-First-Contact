@@ -8,6 +8,7 @@ onready var object_holder = get_parent().get_parent().get_node("Objects")
 onready var states_holder = $States
 onready var health = $Stats/Health
 onready var sprite = $Sprite
+onready var anim_hurt = $Addons/HurtAnimation
 
 onready var audio_hurt = $Audio/Hurt
 onready var sound_hurt = preload("res://sounds/sfx/player_hit.wav")
@@ -25,6 +26,7 @@ export var color = Color.white
 var is_dead = false
 
 func _ready():
+	anim_hurt.playback_speed = 0.7
 	if states_holder != null:
 		for child in states_holder.get_children():
 			possible_states[child.state_name] = child
@@ -53,24 +55,19 @@ func change_direction(dir = "idle"):
 	pass
 
 func damage(dmg = 1):
-	#TODO do damaged only
-	#for death
-#	sprite.visible = false
-#	is_dead = true
-#	$CollisionShape2D.disabled = true
 	var d = death_particle_resource.instance()
 	d.setup(global_position, color)
 	object_holder.add_child(d)
 	queue_free()
-#	play_sound("die")
-#	health.update(1)
 
 func play_sound(sound):
 	match sound:
 		"hurt":
+			audio_hurt.volume_db = 3.0
 			audio_hurt.stream = sound_hurt
 			audio_hurt.play()
 		"die":
+			audio_hurt.volume_db = 0.0			
 			audio_hurt.stream = sound_die
 			audio_hurt.play()
 		"shoot":

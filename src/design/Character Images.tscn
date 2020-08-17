@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/sprite frames/Enemy.tres" type="SpriteFrames" id=1]
+
+[node name="Characters" type="Node2D"]
+
+[node name="1" type="AnimatedSprite" parent="."]
+position = Vector2( 7.30411, 48.6936 )
+rotation = -0.523047
+frames = ExtResource( 1 )
+animation = "1"
+playing = true
+
+[node name="2" type="AnimatedSprite" parent="."]
+position = Vector2( 57.7028, 47.2556 )
+rotation = 0.258358
+frames = ExtResource( 1 )
+animation = "2"
+playing = true
+
+[node name="3" type="AnimatedSprite" parent="."]
+position = Vector2( 58.6863, 31.6218 )
+rotation = 0.719793
+frames = ExtResource( 1 )
+animation = "3"
+playing = true
+
+[node name="4" type="AnimatedSprite" parent="."]
+position = Vector2( 6.47517, 19.3417 )
+frames = ExtResource( 1 )
+animation = "4"
+playing = true
+
+[node name="5" type="AnimatedSprite" parent="."]
+position = Vector2( 7.56133, 32.0705 )
+rotation = 0.294316
+frames = ExtResource( 1 )
+animation = "5"
+playing = true
+
+[node name="6" type="AnimatedSprite" parent="."]
+position = Vector2( 41.3065, 10.2179 )
+frames = ExtResource( 1 )
+animation = "6"
+frame = 1
+playing = true

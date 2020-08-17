@@ -9,7 +9,8 @@ export var type = "bot"
 var inputs = {
 	is_moving = false,
 	input_direction = Vector2.ZERO,
-	is_shooting = false
+	is_shooting = false,
+	is_bombing = false
 }
 
 func get_raw_input() -> Dictionary:
@@ -18,19 +19,22 @@ func get_raw_input() -> Dictionary:
 			inputs = {
 				is_moving = true,
 				input_direction = Vector2.DOWN,
-				is_shooting = false
+				is_shooting = false,
+				is_bombing = false
 			}	
 		"structure":
 			inputs = {
 				is_moving = false,
 				input_direction = Vector2.ZERO,
-				is_shooting = false
+				is_shooting = false,
+				is_bombing = false
 			}
 		_:
 			inputs = {
 				is_moving = Input.is_action_pressed("move_down") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_up"),
 				input_direction = get_input_direction(),
-				is_shooting = Input.is_action_pressed("shoot")
+				is_shooting = Input.is_action_pressed("shoot"),
+				is_bombing = Input.is_action_just_pressed("bomb")
 			}
 	return inputs
 	

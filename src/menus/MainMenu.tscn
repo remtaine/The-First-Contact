@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/menus/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Kenney Space.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://fonts/Pixels TEXT.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://src/sprite frames/Enemy.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://src/design/Character Images.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sounds/music/MENU JDB_Eternal_Fountain.ogg" type="AudioStream" id=5]
 [ext_resource path="res://src/world/Wall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/characters/UFO.tscn" type="PackedScene" id=7]
@@ -12,6 +12,7 @@
 [ext_resource path="res://images/particles/asteroids/asteroid2.png" type="Texture" id=10]
 [ext_resource path="res://images/particles/asteroids/asteroid4.png" type="Texture" id=11]
 [ext_resource path="res://images/particles/asteroids/asteroid5.png" type="Texture" id=12]
+[ext_resource path="res://sounds/sfx/menus/confirmation_001.ogg" type="AudioStream" id=13]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.240741, 0.734568, 1 )
@@ -203,52 +204,7 @@ position = Vector2( -8.25, 14 )
 [node name="Healthbar" parent="Obstacles/UFO/Stats" index="0"]
 visible = false
 
-[node name="Characters" type="Node2D" parent="."]
-
-[node name="1" type="AnimatedSprite" parent="Characters"]
-position = Vector2( 7.30411, 48.6936 )
-rotation = -0.523047
-frames = ExtResource( 4 )
-animation = "1"
-frame = 1
-playing = true
-
-[node name="2" type="AnimatedSprite" parent="Characters"]
-position = Vector2( 57.7028, 47.2556 )
-rotation = 0.258358
-frames = ExtResource( 4 )
-animation = "2"
-frame = 1
-playing = true
-
-[node name="3" type="AnimatedSprite" parent="Characters"]
-position = Vector2( 58.6863, 31.6218 )
-rotation = 0.719793
-frames = ExtResource( 4 )
-animation = "3"
-frame = 1
-playing = true
-
-[node name="4" type="AnimatedSprite" parent="Characters"]
-position = Vector2( 6.47517, 19.3417 )
-frames = ExtResource( 4 )
-animation = "4"
-frame = 1
-playing = true
-
-[node name="5" type="AnimatedSprite" parent="Characters"]
-position = Vector2( 7.56133, 32.0705 )
-rotation = 0.294316
-frames = ExtResource( 4 )
-animation = "5"
-frame = 1
-playing = true
-
-[node name="6" type="AnimatedSprite" parent="Characters"]
-position = Vector2( 41.3065, 10.2179 )
-frames = ExtResource( 4 )
-animation = "6"
-playing = true
+[node name="Characters" parent="." instance=ExtResource( 4 )]
 
 [node name="Labels" type="Control" parent="."]
 margin_left = 5.34938
@@ -304,6 +260,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CreditsLabel2" type="Label" parent="Labels"]
+margin_left = 37.1879
+margin_top = 60.7249
+margin_right = 77.1879
+margin_bottom = 74.7249
+custom_fonts/font = SubResource( 7 )
+custom_constants/line_spacing = -1
+text = "v1.0.2"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_left = -0.489765
 margin_top = -2.0815
@@ -325,8 +294,11 @@ __meta__ = {
 
 [node name="Audio" type="Node2D" parent="."]
 
-[node name="Theme" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="Theme" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 5 )
 autoplay = true
+
+[node name="Clicked" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 13 )
 
 [editable path="Obstacles/UFO"]

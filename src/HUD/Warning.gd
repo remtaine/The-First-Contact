@@ -4,3 +4,7 @@ extends Sprite
 
 func _ready():
 	pass
+
+func animate():
+	$MoveAnim.play("appear")
+	$FlashAnim.play("appear")

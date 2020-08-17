@@ -6,6 +6,8 @@ onready var cont = $ContinueLabel
 onready var cont_anim = $ContinueLabel/FlashAnimation
 onready var tween = $Tween
 onready var audio_type = $Audio/Type
+
+onready var audio_clicked = $Audio/Clicked
 #onready var timer_type = $Timers/Type
 var total_text = ""
 var letters = 0
@@ -23,7 +25,7 @@ func _process(delta):
 	story.text = total_text.left(letters)
 	if letters == total_text.length() and not cont_anim.is_playing():
 		fully_on()
-	elif story.text.ends_with(".") and not cont_anim.is_playing():# or story.text.ends_with("!"):
+	elif story.text.ends_with("!") and not cont_anim.is_playing():# or story.text.ends_with("!"):
 		tween.stop_all()		
 		audio_type.stream_paused = true
 		yield(get_tree().create_timer(0.5), "timeout")
@@ -37,8 +39,9 @@ func fully_on():
 	audio_type.stop()
 
 func _unhandled_input(event):
-	if event.is_action_pressed("shoot"):
+	if event.is_action_pressed("shoot")  and cont_anim.playback_speed != 10:
 		if cont_anim.is_playing():
+			audio_clicked.play()
 			cont_anim.playback_speed = 10
 			yield(get_tree().create_timer(0.8), "timeout")
 			get_tree().change_scene(path)

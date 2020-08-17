@@ -5,6 +5,10 @@ var hp : int = 1
 export var val = 1
 var row = null
 var row_pos = null
+var minimum_combo = 3
+onready var hp_label = $HealthLabel
+onready var combo_label_resource = preload("res://src/addons/ComboLabel.tscn")
+
 func _ready():
 	sound_hurt = preload("res://sounds/sfx/enemy_hit.wav")
 	sound_die = preload("res://sounds/sfx/enemy_dead.wav")
@@ -48,14 +52,20 @@ func match_to_hp():
 		8: #ie dark green
 			color = Color("008751")
 	$Sprite.play(String(hp))
+	$HealthLabel.text = String(hp)
+	$HealthLabel.add_color_override("font_color", color)
 		
-func damage(dmg = 1, check_rows = true):
+func damage(dmg = 1, check_rows = true, combo = 0):
 	#TODO check if damage at least 3 in a row
 	if check_rows:
 		var damaged = row.check_if_match(row_pos)
-		if damaged != null and damaged.size() >= 2:
+		if damaged != null and damaged.size() >= minimum_combo: 
 			for enemy in damaged:
-				enemy.damage(1000, false)
+				if enemy != self:
+					enemy.damage(1000, false)
+				else:
+					enemy.damage(1000, false, damaged.size())
+					
 	#first check left
 	#first check right
 	#if in_a_row.length > 	3
@@ -64,7 +74,13 @@ func damage(dmg = 1, check_rows = true):
 		#TODO flash anim for hurt
 		match_to_hp()
 		play_sound("hurt")
+		anim_hurt.play("hurt")
 	else:
+		if combo > 0:
+			var d = combo_label_resource.instance()
+			d.setup(global_position,combo)
+			object_holder.add_child(d)
+		get_tree().call_group("levels", "update_score", 1 + (combo/2))
 		.damage(dmg)
 #	play_sound("die")
 #	health.update(1)
